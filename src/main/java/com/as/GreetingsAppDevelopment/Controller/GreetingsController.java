@@ -3,6 +3,10 @@ package com.as.GreetingsAppDevelopment.Controller;
 import com.as.GreetingsAppDevelopment.Service.GreetingsService;
 import com.as.GreetingsAppDevelopment.models.Greetings;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/greeting")
@@ -12,8 +16,14 @@ public class GreetingsController {
     public GreetingsController(GreetingsService greetingsService){
         this.greetingsService=greetingsService;
     }
+    //UC3
+    @GetMapping("/fl")
+    public String getGreeting(@RequestParam(required = false)String firstName,@RequestParam(required = false)String lastName){
+        return greetingsService.getGreetingMessage(firstName, lastName);
+    }
 
-    @GetMapping
+//    UC2
+    @GetMapping("/empty")
     public String getGreeting(){
         return greetingsService.getGreetingMessage();
     }
