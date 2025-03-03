@@ -16,6 +16,12 @@ public class GreetingsController {
     public GreetingsController(GreetingsService greetingsService){
         this.greetingsService=greetingsService;
     }
+
+    //UC5
+    @GetMapping("/id")
+    public Greetings getGreetingById(@PathVariable Long id) {
+        return greetingsService.getGreetingById(id);
+    }
    //UC4
     @PostMapping("/save")
     public Greetings  savesGreeting(@RequestBody Greetings greetings) {

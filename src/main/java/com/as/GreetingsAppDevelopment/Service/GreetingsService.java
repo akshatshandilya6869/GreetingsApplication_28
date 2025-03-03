@@ -1,10 +1,12 @@
 package com.as.GreetingsAppDevelopment.Service;
 import com.as.GreetingsAppDevelopment.Repository.GreetingRepository;
 import com.as.GreetingsAppDevelopment.models.Greetings;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class GreetingsService {
+    @Autowired
     private final GreetingRepository greetingRepository;
 
     public GreetingsService(GreetingRepository greetingRepository){
@@ -29,5 +31,9 @@ public class GreetingsService {
     public Greetings saveGreetingMessage(String message){
 //        String Greetings=new Greetings(message);
         return greetingRepository.save(new Greetings(message));
+    }
+    public Greetings getGreetingById(Long id){
+        return greetingRepository.findById(id)
+                .orElseThrow(()-> new RuntimeException("Couldn't find greeting with id" + id));
     }
 }
