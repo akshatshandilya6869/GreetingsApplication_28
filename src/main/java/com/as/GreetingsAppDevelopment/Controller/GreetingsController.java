@@ -16,11 +16,12 @@ public class GreetingsController {
     public GreetingsController(GreetingsService greetingsService){
         this.greetingsService=greetingsService;
     }
-    //UC4
-    @PostMapping("/save")
-    public Greetings  savesGreeting(@RequestBody Greetings greetings) {
-        return greetingsService.saveGreetingMessage(greetings.getMessage());
-    }
+//    //UC4
+//    @PostMapping("/save")
+//    public Greetings  savesGreeting(@RequestBody Greetings greetings) {
+//        return greetingsService.saveGreetingMessage(greetings.getMessage());
+//    }
+
     //UC3
     @GetMapping("/firstNameLastName")
     public String getGreeting(@RequestParam(required = false)String firstName,@RequestParam(required = false)String lastName){
