@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.*;
 @RestController
 @RequestMapping("/greeting")
 public class GreetingsController {
@@ -58,5 +59,9 @@ public class GreetingsController {
     @DeleteMapping("/{name}")
     public Greetings deleteGreeting(@PathVariable String name) {
         return new Greetings("Goodbye " + name + " from DELETE");
+    }
+    @GetMapping("/all")
+    public List<Greetings> getAllGreetings() {
+        return greetingsService.getAllGreetings();
     }
 }

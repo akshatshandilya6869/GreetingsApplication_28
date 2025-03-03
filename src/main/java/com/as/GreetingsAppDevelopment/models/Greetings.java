@@ -9,6 +9,9 @@ public class Greetings {
     private Long id;
     private String message;
 
+    public Greetings() {
+    }
+
     public Greetings(String message)
     {
         this.message = message;
