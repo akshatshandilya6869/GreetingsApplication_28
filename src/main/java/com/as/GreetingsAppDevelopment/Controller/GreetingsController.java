@@ -2,6 +2,7 @@ package com.as.GreetingsAppDevelopment.Controller;
 
 import com.as.GreetingsAppDevelopment.Service.GreetingsService;
 import com.as.GreetingsAppDevelopment.models.Greetings;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -67,5 +68,10 @@ public class GreetingsController {
     @PutMapping("/id/{id}")
     public Greetings updateGreeting(@PathVariable Long id, @RequestBody Greetings greetings){
         return greetingsService.updateGreeting(id,greetings.getMessage());
+    }
+    @DeleteMapping("/id/{id}")
+    public ResponseEntity<String> deleteGreeting(@PathVariable Long id){
+        greetingsService.deleteGreeting(id);
+        return ResponseEntity.ok("Greeting deleted Successfully");
     }
 }
