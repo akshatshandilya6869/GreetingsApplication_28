@@ -19,7 +19,7 @@ public class GreetingsController {
     }
 
     //UC5
-    @GetMapping("/id")
+    @GetMapping("/{id}")
     public Greetings getGreetingById(@PathVariable Long id) {
         return greetingsService.getGreetingById(id);
     }
@@ -63,5 +63,9 @@ public class GreetingsController {
     @GetMapping("/all")
     public List<Greetings> getAllGreetings() {
         return greetingsService.getAllGreetings();
+    }
+    @PutMapping("/id/{id}")
+    public Greetings updateGreeting(@PathVariable Long id, @RequestBody Greetings greetings){
+        return greetingsService.updateGreeting(id,greetings.getMessage());
     }
 }
