@@ -1,13 +1,28 @@
 package com.as.GreetingsAppDevelopment.models;
+import jakarta.persistence.*;
 
+@Entity
+@Table(name="AllGreetings")
 public class Greetings {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String message;
 
-    public Greetings(String message) {
+    public Greetings(String message)
+    {
         this.message = message;
     }
+    public Long getId(){
+        return id;
+    }
 
-    public String getMessage() {
+    public void setId(Long id){
+        this.id=id;
+    }
+
+    public String getMessage()
+    {
         return message;
     }
 
